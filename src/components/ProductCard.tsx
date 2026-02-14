@@ -26,20 +26,23 @@ export default function ProductCard({ product }: ProductCardProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            whileHover={{ y: -5 }}
-            className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group border border-neutral-100 flex flex-col h-full"
+            whileHover={{ y: -8 }}
+            className="bg-white rounded-3xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-neutral-100 flex flex-col h-full relative"
         >
             <div className="relative aspect-square overflow-hidden bg-neutral-100">
                 <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
+                {/* Desktop: Hover Button, Mobile: Always Visible (handled via CSS/Tailwind) */}
                 <button
                     onClick={handleAddToCart}
-                    className={`absolute bottom-4 right-4 p-3 rounded-full shadow-lg translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ${isAdded ? 'bg-green-600 text-white' : 'bg-white text-green-700 hover:bg-green-600 hover:text-white'}`}
+                    className={`absolute bottom-4 right-4 p-3 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 z-10 
+                        ${isAdded ? 'bg-green-600 text-white scale-110' : 'bg-white/90 text-green-700 hover:bg-green-600 hover:text-white'}
+                        translate-y-0 opacity-100 md:translate-y-12 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100`}
                     title="Add to Cart"
                 >
                     <ShoppingCart className="w-5 h-5" />
