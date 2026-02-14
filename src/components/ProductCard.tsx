@@ -37,12 +37,12 @@ export default function ProductCard({ product }: ProductCardProps) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                {/* Desktop: Hover Button, Mobile: Always Visible (handled via CSS/Tailwind) */}
+                {/* Desktop: Hover Button Only */}
                 <button
                     onClick={handleAddToCart}
-                    className={`absolute bottom-4 right-4 p-3 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 z-10 
+                    className={`hidden md:flex absolute bottom-4 right-4 p-3 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 z-10 
                         ${isAdded ? 'bg-green-600 text-white scale-110' : 'bg-white/90 text-green-700 hover:bg-green-600 hover:text-white'}
-                        translate-y-0 opacity-100 md:translate-y-12 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100`}
+                        translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100`}
                     title="Add to Cart"
                 >
                     <ShoppingCart className="w-5 h-5" />
@@ -60,8 +60,8 @@ export default function ProductCard({ product }: ProductCardProps) {
                     <span className="text-xl font-bold text-green-700">₹{product.price}</span>
                     <button
                         onClick={handleAddToCart}
-                        className={`md:hidden px-4 py-2 rounded-full text-sm font-bold shadow-md transition-all active:scale-95 flex items-center gap-2
-                            ${isAdded ? 'bg-green-700 text-white' : 'bg-green-100 text-green-800'}`}
+                        className={`px-4 py-2 rounded-full text-sm font-bold shadow-md transition-all active:scale-95 flex items-center gap-2
+                            ${isAdded ? 'bg-green-700 text-white' : 'bg-green-100 text-green-800 hover:bg-green-200'}`}
                     >
                         {isAdded ? 'Added' : 'Add +'}
                     </button>
